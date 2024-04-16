@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"crud/models"
+	"agenda/models"
 	"encoding/json"
 	"errors"
 	"strconv"

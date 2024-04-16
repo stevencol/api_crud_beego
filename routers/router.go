@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"crud/controllers"
+	"agenda/controllers"
 
 	"github.com/astaxie/beego"
 )
@@ -16,21 +16,21 @@ import (
 func init() {
 	ns := beego.NewNamespace("/v1",
 
-		beego.NSNamespace("/contacto",
+		beego.NSNamespace("/persona",
 			beego.NSInclude(
-				&controllers.ContactoController{},
-			),
-		),
-
-		beego.NSNamespace("/telefono",
-			beego.NSInclude(
-				&controllers.TelefonoController{},
+				&controllers.PersonaController{},
 			),
 		),
 
 		beego.NSNamespace("/correo_electronico",
 			beego.NSInclude(
 				&controllers.CorreoElectronicoController{},
+			),
+		),
+
+		beego.NSNamespace("/telefono",
+			beego.NSInclude(
+				&controllers.TelefonoController{},
 			),
 		),
 	)

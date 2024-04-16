@@ -1,12 +1,13 @@
 package controllers
 
 import (
-	"crud/models"
+	"agenda/models"
 	"encoding/json"
 	"errors"
-	"github.com/astaxie/beego"
 	"strconv"
 	"strings"
+
+	"github.com/astaxie/beego"
 )
 
 // CorreoElectronicoController operations for CorreoElectronico
@@ -35,9 +36,9 @@ func (c *CorreoElectronicoController) Post() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models.AddCorreoElectronico(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = map[string]interface{}{"succes": true, "status": "201", "Message": "Se complento el resgistro", "Data": v}
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = map[string]interface{}{"succes": false, "status": "401", "Message": "Error al reliza registro", "Data": v}
+			c.Data["json"] = err.Error()
 		}
 	} else {
 		c.Data["json"] = err.Error()

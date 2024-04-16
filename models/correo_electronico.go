@@ -5,14 +5,18 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type CorreoElectronico struct {
 	Id                int       `orm:"column(id);pk;auto"`
-	CorreoElectronico string    `orm:"column(correo_electronico)"`
-	ContactoId        *Contacto `orm:"column(contacto_id);rel(fk)"`
+	PersonaId         *Persona  `orm:"column(persona_id);rel(fk)"`
+	Correo            string    `orm:"column(correo)"`
+	Activo            bool      `orm:"column(activo)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now_add"`
 }
 
 func (t *CorreoElectronico) TableName() string {
